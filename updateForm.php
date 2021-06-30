@@ -1,5 +1,7 @@
+<?php include('database.php'); ?>
+
 <?php
-    include('database.php');
+    
     $productId = $_GET['id'];
     $sql = "SELECT * FROM product WHERE id = '$productId'";
     $results = pg_query($conn, $sql);
@@ -63,6 +65,7 @@
                 <label for="exampleInputPassword1">Quantity</label>
                 <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Quantity"
                 name="quantity"
+                value="<?php echo $row['quantity']?>"
                 >
             </div>
             <br>
