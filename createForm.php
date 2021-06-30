@@ -47,7 +47,7 @@
             <div class="form-group">
                 <br>
                 <label for="exampleInputPassword1">Quantity</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Price"
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Quantity"
                 name="quantity"
                 >
             </div>
