@@ -124,15 +124,15 @@
             </tr>  -->
             <?php while ($row = pg_fetch_row($products)) {?>
                 <tr>
+                    <td><?php echo $row['2']; ?></td>
                     <td><?php echo $row['0']; ?></td>
                     <td><?php echo $row['1']; ?></td>
-                    <td><?php echo $row['2']; ?></td>
-                    <td class="image"><img src="image/car01.png"><?php echo $row['3']; ?></td>
+                    <td class="image"><img src="image/car01.png"><?php echo $row['4']; ?></td>
                     <td><?php echo $row['3']; ?></td>
                     <td><?php echo $row['5']; ?></td>
                     <td>
-                        <a href="updateForm.php?edit=<?php echo $row['0']; ?>" target="_blank"><button type="button" class="btn-success">Update</button></a>
-                        <a href="product.php?del=<?php echo $row['0']; ?>"><button type="button" class="btn-danger" >Delete</button></a>
+                        <a href="updateForm.php?edit=<?php echo $row['2']; ?>" target="_blank"><button type="button" class="btn-success">Update</button></a>
+                        <a href="product.php?del=<?php echo $row['2']; ?>"><button type="button" class="btn-danger" >Delete</button></a>
                     </td>
                 </tr> 
             <?php }?>  
