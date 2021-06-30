@@ -15,7 +15,7 @@
         $type = $_POST['type'];
         try {
             pg_query($conn, "INSERT INTO tbProduct (Name, Type, Image, Price, Quantity) VALUES ( '$name', '$type','$image' ,'$price','$quantity')"); 
-		    echo '<script>window.location.href = "product.php";</script>';
+		    header('location: product.php');
             exit();
         } catch (Exception $e) {
             echo 'Message: ' .$e->getMessage();
