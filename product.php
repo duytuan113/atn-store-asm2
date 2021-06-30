@@ -122,7 +122,7 @@
                     <a href="#"><button type="button" class="btn-danger" >Delete</button></a>
                 </td>
             </tr>  -->
-            <?php while ($row = pg_fetch_row($products)) {?>
+            <?php while ($row = pg_fetch_assoc($products)) {?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['name']; ?></td>
