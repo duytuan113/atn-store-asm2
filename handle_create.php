@@ -14,7 +14,7 @@
         $image = $_POST['image'];
         $type = $_POST['type'];
         try {
-            pg_query($conn, "INSERT INTO tbProduct (Name, Type, Price, Image, Quantity) VALUES ( '$name', '$type' ,'$price', '$image','$quantity');"); 
+            pg_query($conn, "INSERT INTO 'tbProduct' (Name, Type, Price, Image, Quantity) VALUES ( '$name', '$type' ,'$price', '$image','$quantity');"); 
 		    header('location: product.php');
             exit();
         } catch (Exception $e) {
