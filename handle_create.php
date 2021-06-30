@@ -8,7 +8,7 @@
         $image = $_POST['image'];
         $type = $_POST['type'];
 
-        $sql = "INSERT INTO 'tbProduct' ('Name', 'Type', 'Price', 'Image', 'Quantity') VALUES ( '$name', '$type' ,'$price', '$image','$quantity')";
+        $sql = "INSERT INTO product (name, type, image, price, quantity) VALUES ( '$name', '$type', '$image', '$price','$quantity')";
         try {
             pg_query($conn, $sql); 
 		    header('location: product.php');

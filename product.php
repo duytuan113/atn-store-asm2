@@ -5,7 +5,7 @@
 <?php  include('database.php'); ?>
 
 <?php 
-    $products = pg_query($conn, "SELECT * FROM tbProduct");
+    $products = pg_query($conn, "SELECT * FROM product");
     // $row = pg_fetch_row($products);
     // var_dump($row);
     // die()
@@ -16,7 +16,7 @@
     if (isset($_GET['del'])) {
         $id = $_GET['del'];
         try {
-            pg_query($conn, "DELETE FROM tbProduct WHERE id = $id");
+            pg_query($conn, "DELETE FROM product WHERE id = $id");
             header('location: product.php');
         } catch (Exception $e) {
             echo 'Message: ' .$e->getMessage();
