@@ -31,7 +31,6 @@
                     name="name"
                     value="<?php echo $row['name']?>"
                 >
-                
             </div>
             <div class="form-group">
                 <br>

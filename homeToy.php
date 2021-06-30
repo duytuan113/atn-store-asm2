@@ -18,7 +18,7 @@
           <a href="home.php">Home</a>
           <a href="cart.php">Contact</a>
           <a href="cart.php">Cart</a>
-          <a href="signIn.php">Sign In</a>
+          <a href="sign_in.php">Sign In</a>
         </div>
       </header>
       <main>
