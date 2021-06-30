@@ -6,7 +6,7 @@
     $image = "";
     $type = "";
 
-	if (isset($_POST['save'])) {
+	if (isset($_POST['submit'])) {
         //header("Location: http://localhost/ASM2-Cloud/product.php"); 
 		$name = $_POST['name'];
 		$quantity = $_POST['quantity'];
