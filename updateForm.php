@@ -6,7 +6,7 @@
 		$record = pg_query($conn, "SELECT * FROM product WHERE id = '$id'");
 
 		if ($record) {
-			$product = pg_fetch_row($record);
+			$product = pg_fetch_assoc($record);
 			$name = $product['name'];
 			$quantity = $product['quantity'];
             $price = $product['price'];
