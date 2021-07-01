@@ -39,9 +39,9 @@
         <div>
           <?php  while($typeName = pg_fetch_assoc($typeResult)) {?>
             <h3><?php echo $typeName['type'] ?></h3>
+              <?php foreach($products as $product) { ?>  
+                  <?php if($product['type'] == $typeName['type']) { ?>
             <div class="row center">
-            <?php foreach($products as $product) { ?>  
-                <?php if($product['type'] == $typeName['type']) { ?>
                   <div class="card">
                     <a href="product.html">
                       <!-- image size: 680px by 830px -->
@@ -61,9 +61,10 @@
                       <div class="price">Price: <?php echo $product['price'] ?> VNĐ</div>
                       <div class="price">Quantity: <?php echo $product['quantity']?></div>
                     </div>
+                
+              </div>
                   <?php } ?>
                 <?php } ?>
-              </div>
             <?php } ?>
           </div>
         </div>
