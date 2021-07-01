@@ -36,9 +36,10 @@
         </div>
       </header>
       <main>
-        <div>
-          <?php  while($typeName = pg_fetch_assoc($typeResult)) {?>
+      <?php  while($typeName = pg_fetch_assoc($typeResult)) {?>
             <h3><?php echo $typeName['type'] ?></h3>
+        <div>
+          
               <?php foreach($products as $product) { ?>  
                   <?php if($product['type'] == $typeName['type']) { ?>
             <div class="row center">
@@ -65,9 +66,10 @@
               </div>
                   <?php } ?>
                 <?php } ?>
-            <?php } ?>
-          </div>
+           
+          
         </div>
+        <?php } ?>
       </main>
       <footer class="row center">Cloud Computing-1644-GCD0807B</footer>
     </div>
