@@ -1,3 +1,17 @@
+<?php  include('database.php'); ?>
+<?php 
+  $products = [];
+  $getTypeQuery = "SELECT DISTINCT type FROM product ORDER BY type ASC";
+  $typeResult = pg_query($conn, $getTypeQuery);
+  
+  $sql = "SELECT * FROM product";
+  $result = pg_query($conn, $sql);
+  while($row = pg_fetch_assoc($result)){
+      array_push($products, $row);
+  };
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,165 +37,34 @@
       </header>
       <main>
         <div>
-          <h3>SPORT</h3>
-          <div class="row center">
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
+          <?php  while($typeName = pg_fetch_assoc($typeResult)) {?>
+            <h3><?php echo $typeName['type'] ?></h3>
+            <div class="row center">
+            <?php foreach($products as $product) { ?>  
+                <?php if($product['type'] == $typeName['type']) { ?>
+                  <div class="card">
+                    <a href="product.html">
+                      <!-- image size: 680px by 830px -->
+                      <img class="medium" src="image/<?php echo $product['image'] ?>" alt="product" />
+                    </a>
+                    <div class="card-body">
+                      <a href="product.html">
+                        <h2><?php echo $product['name'] ?></h2>
+                      </a>
+                      <div class="rating">
+                        <span> <i class="fa fa-star"></i> </span>
+                        <span> <i class="fa fa-star"></i> </span>
+                        <span> <i class="fa fa-star"></i> </span>
+                        <span> <i class="fa fa-star"></i> </span>
+                        <span> <i class="fa fa-star"></i> </span>
+                      </div>
+                      <div class="price">Price: <?php echo $product['price'] ?> VNĐ</div>
+                      <div class="price">Quantity: <?php echo $product['quantity']?></div>
+                    </div>
+                  <?php } ?>
+                <?php } ?>
               </div>
-            </div>
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
-              </div>
-            </div>
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
-              </div>
-            </div>
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3>SPORT</h3>
-          <div class="row center">
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
-              </div>
-            </div>
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
-              </div>
-            </div>
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
-              </div>
-            </div>
-            <div class="card">
-              <a href="product.html">
-                <!-- image size: 680px by 830px -->
-                <img class="medium" src="image/car01.png" alt="product" />
-              </a>
-              <div class="card-body">
-                <a href="product.html">
-                  <h2>Bumblebee Transformer</h2>
-                </a>
-                <div class="rating">
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                  <span> <i class="fa fa-star"></i> </span>
-                </div>
-                <div class="price">$120</div>
-              </div>
-            </div>
+            <?php } ?>
           </div>
         </div>
       </main>
