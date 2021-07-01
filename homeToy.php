@@ -37,9 +37,9 @@
       </header>
       <main>
       <?php  while($typeName = pg_fetch_assoc($typeResult)) {?>
-            <h3><?php echo $typeName['type'] ?></h3>
+            
         <div>
-          
+          <h3><?php echo $typeName['type'] ?></h3>
               <?php foreach($products as $product) { ?>  
                   <?php if($product['type'] == $typeName['type']) { ?>
             <div class="row center">
