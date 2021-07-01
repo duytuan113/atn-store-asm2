@@ -67,7 +67,7 @@
                   <?php } ?>
                 <?php } ?>
            
-          
+          </div>
         </div>
         <?php } ?>
       </main>
