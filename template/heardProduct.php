@@ -82,7 +82,7 @@
           <h3> Product Table</h3>
         </div>
         <div class="right_area">
-            <a href="handle_logout.php" class="logout_btn">Logout</a>
+            <a href="homeToy.php" class="logout_btn">Logout</a>
         </div>
     </header>
     <!-- header area end -->

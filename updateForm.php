@@ -1,11 +1,35 @@
 <?php include('database.php'); ?>
 
 <?php
+     if (isset($_GET['edit'])) {
+		$id = $_GET['edit'];
+		$record = pg_query($conn, "SELECT * FROM product WHERE id = '$id'");
+
+		if ($record) {
+			$product = pg_fetch_row($record);
+			$name = $product['name'];
+			$quantity = $product['quantity'];
+            $price = $product['price'];
+            $image = $product['image'];
+            $type = $product['type'];
+		}
+	}
+?>
+<?php 
+    if (isset($_POST['update'])) {
+        $updatedName = $_POST['name'];
+        $updatedQuantity = $_POST['quantity'];
+        $updatedPrice = $_POST['price'];
+        $updatedType = $_POST['type'];
+        $updatedImage = $_POST['image'];
     
-    $productId = $_GET['id'];
-    $sql = "SELECT * FROM product WHERE id = '$productId'";
-    $results = pg_query($conn, $sql);
-    $row = pg_fetch_assoc($results);
+        pg_query($conn, "UPDATE product
+        SET name = '$updatedName', image= '$updatedImage', type ='$updatedType', price='$updatedPrice', quantity = '$updatedQuantity'
+        WHERE id = $id");
+        // $_SESSION['message'] = "Address updated!"; 
+        header('location: product.php');
+        exit();
+    }
 ?>
 
 <!doctype html>
@@ -23,13 +47,13 @@
   <body>
     <h3>Update Product</h3>
     <div class="container">
-        <form action="handle_update.php?id=<?php echo $row['id']?>" method="POST">
+        <form action="updateForm.php" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" 
                     aria-describedby="emailHelp" placeholder="Enter product name"
                     name="name"
-                    value="<?php echo $row['name']?>"
+                    value="<?php echo $name ?>"
                 >
             </div>
             <div class="form-group">
@@ -38,7 +62,7 @@
                 <input type="file" class="form-control" 
                 id="exampleInputPassword1" 
                 name="image"
-                value="<?php echo $row['image']?>"
+                value="<?php echo $image ?>"
                 >
             </div>
             <div class="form-group">
@@ -56,7 +80,7 @@
                 <input type="text" class="form-control" 
                 id="exampleInputPassword1" placeholder="Enter Price"
                 name="price"
-                value="<?php echo $row['price']?>"
+                value="<?php echo $price ?>"
                 >
             </div>
             <div class="form-group">
@@ -64,11 +88,11 @@
                 <label for="exampleInputPassword1">Quantity</label>
                 <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Quantity"
                 name="quantity"
-                value="<?php echo $row['quantity']?>"
+                value="<?php echo $quantity?>"
                 >
             </div>
             <br>
-            <button type="submit" class="btn btn-primary" name='submit'>Submit</button>
+            <button type="submit" class="btn btn-primary" name='update'>Submit</button>
         </form>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -77,9 +101,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
+   
   </body>
 </html>
