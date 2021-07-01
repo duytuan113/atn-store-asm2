@@ -36,8 +36,8 @@
         table {
         position: absolute;
         left: 48%;
-        top: 30%;
-        margin-top: 25%;
+        top: 34%;
+        margin-top: 26%;
         transform: translate(-50%, -50%);
         border-collapse: collapse;
         width: 960px;
