@@ -39,7 +39,6 @@
       <?php  while($typeName = pg_fetch_assoc($typeResult)) {?>
             
         <div>
-          <h3><?php echo $typeName['type'] ?></h3>
               <?php foreach($products as $product) { ?>  
                   <?php if($product['type'] == $typeName['type']) { ?>
             <div class="row center">
@@ -59,6 +58,7 @@
                         <span> <i class="fa fa-star"></i> </span>
                         <span> <i class="fa fa-star"></i> </span>
                       </div>
+                      <div class="price">Type: <?php echo $product['type']?></div>
                       <div class="price">Price: $<?php echo $product['price'] ?></div>
                       <div class="price">Quantity: <?php echo $product['quantity']?></div>
                     </div>
