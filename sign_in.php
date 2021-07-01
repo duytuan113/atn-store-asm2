@@ -7,7 +7,7 @@
         <title>Transparent Login Form</title>
         <link rel="stylesheet" href="login.css"> 
     <body>
-        <form action="sign_in.php" method="POST">
+        <form action="handle_login.php" method="POST">
             <div class="Login-box">
                 <h1>Login</h1>
                 <div class="textbox">
